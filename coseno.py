@@ -110,40 +110,77 @@ for x in range(0, len(array)):
 				vector[x][n]=0
 
 
-	print("El elemento elegido por ruleta es", p1, p2, p3, p4, p5, p6, p7, p8)	
+		print("El elemento elegido por ruleta es", p1, p2, p3, p4, p5, p6, p7, p8)	
 
-print(vector)
-#contador de documentos
-yi2 = x
-s2 = str(yi2).zfill(5)
-for x in range(0, len(array)):	
-	f = open ('comparacion/holamundo'+s2+'.txt','w'  , encoding="utf8")
-	g = 0
-	with open("./Noticias/Noticias segmentadas/contenido/noticia 3 segmentada.txt" , encoding="utf8") as archivo: 
-		for linea in archivo:		
-		
-			for n in range(0,len(array)):
+
+		yi2 = n
+		s2 = str(yi2).zfill(5)
+
+		f = open ('comparacion/holamundo'+s2+'.txt','w'  , encoding="utf8")
+		i = 0
+		nombre_de_la_lista = []
+		with open("./Noticias/Noticias segmentadas/contenido/noticia 3 segmentada.txt" , encoding="utf8") as archivo:
+		    for linea in archivo:       
+		  
+		       	if i == p1 or  i == p2  or i == p3 or i == p4 or i == p5 or i == p6 or i == p7 or i == p8:
+		       		f.write(linea)       		
 			
-				if vector[x][n] == 1:
-					f.write(linea)
-					g = g +1
-					print("s",g)					
-	    
-	f.close()
 
+		       	i= i+1
 
+		f.close()
+	
 
-print("ii",g)
-
-datos2 = [110]
+datos2 = [i]
 k =0
 with open("comparacion/holamundo00001.txt" , encoding="utf8") as archivo2:
 	    for linea2 in archivo2:       	  	          	
 	    	datos2[k] = linea2
+
+
+print(vector)
+
+#for x in range(0, len(array)):	
+	#contador de documentos
+	
+		
+#	for n in range(0,len(array)):
+#		yi2 = x
+#		s2 = str(yi2).zfill(5)
+#		f = open ('comparacion/holamundo'+s2+'.txt','w'  , encoding="utf8")
+#		g = 0
+#		nombre_de_la_lista = []
+#		with open("./Noticias/Noticias segmentadas/contenido/noticia 3 segmentada.txt" , encoding="utf8") as archivo: 
+#			for linea in archivo:		
+##				if linea == ' ':
+#					print("hola")
+#
+#				if vector[x][n] == 1:
+#					f.write(linea)
+#					
+##					print(f)
+##				else:
+#					print("no")	
+#					f.close()
+#				g = g + 1		
+								
+	    	
+#		f.close()
+#		flujo = flujo + 1
+
+
+#print("ii",g)
+#print("flujo",flujo)
+#datos2 = [g]
+#k =0
+#with open("comparacion/holamundo00001.txt" , encoding="utf8") as archivo2:
+#	    for linea2 in archivo2:       	  	          	
+#	    	datos2[k] = linea2
 	       
 
 vectorizer = CountVectorizer()
 
+#print("datos2",datos2)
 
 print("datos de prueba\n" )
 
@@ -152,7 +189,6 @@ x=vectorizer.fit_transform(datos2)
 print("\n")
 print("\n")
 print("\n")
-
 
 print("get feature names")
 print(vectorizer.get_feature_names)
@@ -165,7 +201,6 @@ tfid = TfidfVectorizer().fit_transform(datos2)
 print(tfid)
 
 print(cosine_similarity(tfid[0:10], tfid).flatten())
-
 """ Elitismo """
 
 """ Cruza multi punto aleatorio """
